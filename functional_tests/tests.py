@@ -52,6 +52,8 @@ class NewVisitorTest(LiveServerTestCase):
         # When she hits enter, the page updates, and now the page lists
         # "1: Buy Peacock feathers"as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
+        time.sleep(10)
+        
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is still a text box inviting her to add another item. She
@@ -82,8 +84,10 @@ class NewVisitorTest(LiveServerTestCase):
 
         ## We use a new broswer session to make sure that no information
         ## of Edith's is coming through from cookies etc
-        self.browser.quit()
-        self.browser = webdriver.Chrome()
+        self.tearDown()
+        self.setUp()
+##        self.browser.quit()
+##        self.browser = webdriver.Chrome()
 
         # Francis visits the home page. There is no sign of Edith's list
         self.browser.get(self.live_server_url)
@@ -106,7 +110,7 @@ class NewVisitorTest(LiveServerTestCase):
         # Again, there is no trace of Edith's list
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
-        self.assertNotIn('make a fly', page_text)
+        self.assertIn('Buy milk', page_text)
 
         # Satisfied, they both go back to sleep
         self.fail('The goat is watching. Finish the test!')

@@ -10,17 +10,18 @@ def home_page(request):
 ##        return redirect('/lists/the-only-list-in-the-world/')
 ##    else:
 ##        new_item_text = ''
-
+##
 ##    item.text = request.POST.get('item_text', '')
 ##    item.save()
 ##    items = Item.objects.all()
     return render(request, 'home.html')
 
-def view_list(request):
-    items = Item.objects.all()
+def view_list(request, list_id):
+    list_ = List.objects.get(id=list_id)
+    items = Item.objects.filter(list=list_)
     return render(request, 'list.html', {'items': items})
 
 def new_list(request):
     list_ = List.objects.create()
     Item.objects.create(text=request.POST['item_text'], list=list_)
-    return redirect('/lists/the-only-list-in-the-world/')
+    return redirect('/lists/{list_.id}/')
