@@ -109,7 +109,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn('make a fly', page_text)
 
         # Satisfied, they both go back to sleep
-        self.fail('The goat is watching. Finish the test!')
+##        self.fail('The goat is watching. Finish the test!')
 
 
 if __name__ == '__main__':
