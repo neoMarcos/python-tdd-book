@@ -108,6 +108,30 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
 
+    def test_layout_and_styling(self):
+        # Camilla entra na página online
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(1024, 768)
+
+        # Ela percebe que a caixa de entrada está bem centralizada
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        self.assertAlmostEqual(
+            inputbox.location['x'] + inputbox.size['width'] / 2,
+            512,
+            delta=10
+            )
+
+        # Camilla comeca uma nova lista and vê que também está centralizado
+        inputbox.send_keys('testing')
+        inputbox.send_keys(Keys.ENTER)
+        self.wait_for_row_in_list_table('1: testing')
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        self.assertAlmostEqual(
+            inputbox.location['x'] + inputbox.size['width'] / 2,
+            512,
+            delta=10
+            )
+        
         # Satisfied, they both go back to sleep
 ##        self.fail('The goat is watching. Finish the test!')
 
