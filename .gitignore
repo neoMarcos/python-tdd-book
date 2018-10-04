@@ -3,3 +3,4 @@ chromedriver.exe
 virtualenv
 __pycache__
 *.pyc
+/static
