@@ -25,7 +25,7 @@ SECRET_KEY = 'kw#sn^f0n_&l-r4j=osbvhee*&kxd812m9(n^a6z!u#p^-6#oh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['neomarcos.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
