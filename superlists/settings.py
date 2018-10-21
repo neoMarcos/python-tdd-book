@@ -26,7 +26,6 @@ SECRET_KEY = 'kw#sn^f0n_&l-r4j=osbvhee*&kxd812m9(n^a6z!u#p^-6#oh'
 DEBUG = True
 
 ALLOWED_HOSTS = ['198.211.99.20',
-                 'localhost',
                  '127.0.0.1',
                  'http://neomarcos.pythonanywhere.com/']
 
